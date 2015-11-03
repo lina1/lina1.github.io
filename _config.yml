@@ -1,7 +1,7 @@
 markdown: rdiscount
 permalink: /:year/:month/:day/:title/
-url: http://jaminzzhang.github.com
-author: jaminzzhang
+url: http://lina1.github.com
+author: lina
 pygments: true
 safe: true
 paginate: 16
