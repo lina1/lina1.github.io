@@ -2,7 +2,6 @@
 layout: post
 title: Hello World
 category: "闲谈"
-tag: "helloworld"
 ---
 
 
