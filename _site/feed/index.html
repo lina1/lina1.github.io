@@ -7,7 +7,7 @@
     <title>lina</title>
     <link href="https://github.com/lina1/feed/" rel="self" />
     <link href="https://github.com/lina1" />
-    <lastBuildDate>2015-11-27T01:05:47+08:00</lastBuildDate>
+    <lastBuildDate>2015-11-27T01:08:42+08:00</lastBuildDate>
     <webMaster>lina0908@gmail.com</webMaster>
     
     <item>
@@ -48,6 +48,7 @@
  class IndexHandler(tornado.web.RequestHandler):
      def get(self):
          self.write("Hello World")
+
  if __name__ == "__main__":
      tornado.options.parse_command_line()
      #创建IndexHandler的实例，handler将url和Handler匹配
@@ -57,12 +58,12 @@
      #不断处理http请求（loop）
      tornado.ioloop.IOLoop.instance().start()
 </code></pre></li>
-<li>运行<br/>
-<code>python hello.py --port=8888</code></li>
-<li>查看运行结果  <br/>
-直接浏览器访问http://localhost:8888/<br/>
+<li><p>运行<br/>
+<code>python hello.py --port=8888</code></p></li>
+<li><p>查看运行结果  <br/>
+直接浏览器访问<a href="http://localhost:8888/">http://localhost:8888/</a><br/>
 或直接curl<br/>
-<code>curl http://localhost:8888/</code></li>
+<code>curl http://localhost:8888/</code></p></li>
 </ol>
 
 
