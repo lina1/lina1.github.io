@@ -7,8 +7,75 @@
     <title>lina</title>
     <link href="https://github.com/lina1/feed/" rel="self" />
     <link href="https://github.com/lina1" />
-    <lastBuildDate>2015-11-27T01:11:12+08:00</lastBuildDate>
+    <lastBuildDate>2016-01-15T18:49:52+08:00</lastBuildDate>
     <webMaster>lina0908@gmail.com</webMaster>
+    
+    <item>
+      <title>Tornado学习（一）</title>
+      <link href="https://github.com/lina1/2015/11/27/tornado%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <pubDate>2015-11-27T00:00:00+08:00</pubDate>
+      <author>lina</author>
+      <guid>https://github.com/lina1/2015/11/27/tornado学习（一）</guid>
+      <content:encoded><![CDATA[<blockquote><p>打算学习一下python web框架，准备从tornado入手</p></blockquote>
+
+<h2>一、安装</h2>
+
+<ol>
+<li>直接使用pip安装即可<br/>
+<code>pip install tornado</code></li>
+</ol>
+
+
+<h2>二、Hello World!</h2>
+
+<ol>
+<li><p>当然，第一个必须是HelloWorld</p>
+
+<pre><code> #-*-encoding=utf-8 -*- 
+
+ #hello.py
+
+ import tornado.ioloop   
+ import tornado.web   
+ import tornado.options 
+ import tornado.httpserver       
+
+ #从命令行中读取设置，给定port，否则使用默认值，参数必须为int  
+ from tornado.options import define, options
+ define("port", default=8888, help="run on the given port", type=int)
+
+ #处理请求时，将类实例化，定义的get函数代表处理http的get请求，write表示http响应  
+ class IndexHandler(tornado.web.RequestHandler):
+     def get(self):
+         self.write("Hello World")
+ if __name__ == "__main__":
+     tornado.options.parse_command_line()
+     #创建IndexHandler的实例，handler将url和Handler匹配
+     app = tornado.web.Application(handlers=[(r"/", IndexHandler)])
+     http_server = tornado.httpserver.HTTPServer(app)
+     http_server.listen(options.port)
+     #不断处理http请求（loop）
+     tornado.ioloop.IOLoop.instance().start()`
+</code></pre></li>
+<li>运行<br/>
+<code>python hello.py --port=8888</code></li>
+<li>查看运行结果  <br/>
+直接浏览器访问http://localhost:8888/<br/>
+或直接curl<br/>
+<code>curl http://localhost:8888/</code></li>
+</ol>
+
+
+<blockquote><p>Refers:</p>
+
+<p><a href="http://docs.pythontab.com/tornado/introduction-to-tornado">Introduction to tornado</a></p>
+
+<p><a href="http://www.tornadoweb.org/en/stable/">Tornado Documents</a></p></blockquote>
+
+<p>27 Nov 2015</p>
+
+]]></content:encoded>
+    </item>
     
     <item>
       <title>tornado学习(一)</title>
@@ -370,9 +437,9 @@ enable</p></li>
 
 
 <blockquote><p>主要学习的资料来自<a href="https://www.mwrinfosecurity.com/system/assets/937/original/mwri_drozer-user-guide_2015-03-23.pdf">官方文档</a>和以下：
-http://www.droidsec.cn/%E4%BD%BF%E7%94%A8drozer%E5%AF%B9android%E5%BA%94%E7%94%A8%E8%BF%9B%E8%A1%8C%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0/</p>
+<a href="http://www.droidsec.cn/%E4%BD%BF%E7%94%A8drozer%E5%AF%B9android%E5%BA%94%E7%94%A8%E8%BF%9B%E8%A1%8C%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0/">http://www.droidsec.cn/使用drozer对android应用进行安全评估/</a></p>
 
-<p>http://www.cnblogs.com/goodhacker/p/3906180.html</p></blockquote>
+<p><a href="http://www.cnblogs.com/goodhacker/p/3906180.html">http://www.cnblogs.com/goodhacker/p/3906180.html</a></p></blockquote>
 
 <pre><code>    遗留问题：
     1.android各组件具体的安全机制是怎样的
