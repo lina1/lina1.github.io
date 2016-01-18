@@ -1,6 +1,6 @@
 markdown: rdiscount
 permalink: /:year/:month/:day/:title/
-url: https://github.com/lina1
+url: http://linaontheroad.com
 author: lina
 pygments: true
 safe: true
